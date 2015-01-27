@@ -44,25 +44,16 @@ class action_plugin_mediarename extends DokuWiki_Action_Plugin {
      * Handle the event
      */
     function handle_link(&$event, $param) {
-//if (!$wpcal =& plugin_load('helper', 'wpcalendarlist')) return false;
-        //$_REQUEST['do']='admin';
         global $conf;
         global $lang;
         if (isset($_REQUEST['rename'])){
-            //echo $_REQUEST['rename'];
             $ns = cleanID($_REQUEST['ns']);
             $dir = utf8_encodeFN(str_replace(':','/',$ns));
             $data = array();
-            $recurse=($_REQUEST['rename']=='recv') ? true : false;
+            $recurse=($INPUT->str('rename')=='recv') ? true : false;
 
-            //The showhiddenmedia plugin would provide a changed search function which does not exclude
-            //filenames beginning with '_' (underscore), as unfortunately many digicams name their
-            //files similar to "_IMGxxxx".
-            //      if ($hiddenfiles =& plugin_load('action', 'showhiddenmedia'))  {
-            //  	 	$hiddenfiles->my_search($data,$conf['mediadir'],array($this,'_media_file_rename'),array('showmsg'=>true,'recurse'=>$recurse),$dir,0);}
-            //       else {
             search($data,$conf['mediadir'],array($this,'_media_file_rename'),array('showmsg'=>true,'recurse'=>$recurse),$dir,0);
-//	}
+
         }
 
     }
