@@ -46,8 +46,9 @@ class action_plugin_mediarename extends DokuWiki_Action_Plugin {
     function handle_link(&$event, $param) {
         global $conf;
         global $lang;
+        global $INPUT;
         if (isset($_REQUEST['rename'])){
-            $ns = cleanID($_REQUEST['ns']);
+            $ns = cleanID($INPUT->str('ns'));
             $dir = utf8_encodeFN(str_replace(':','/',$ns));
             $data = array();
             $recurse=($INPUT->str('rename')=='recv') ? true : false;
