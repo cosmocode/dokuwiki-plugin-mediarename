@@ -37,19 +37,18 @@ function mediarename_plugin(){
     glnk.name         = 'mediarename_plugin';
     glnk.innerHTML    = capt2;
     glnk.style.cursor = 'pointer';
- 
-    
+
+
     glnk.onclick = function(){
         var $h1 = jQuery('#media__ns');
-        var h1 = $h1[0];
-        if(!h1) return;
-        var ns = h1.innerHTML;
+        if(!$h1[0]) return;
+        var ns = $h1.html();
 	var rename='flat';
         if (gbox.checked) rename='recv';
         window.location.href=window.location.href+'&ns='+ns+'&rename='+rename;
     };
 
-   
+
     opts.appendChild(gbrk);
     opts.appendChild(gbox);
     opts.appendChild(gboxlbl);
