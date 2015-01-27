@@ -82,27 +82,34 @@ class action_plugin_mediarename extends DokuWiki_Action_Plugin {
             return;
         }
 
-
         //check for validity of the filename
         if($info['id'] != cleanID($info['id'])){
             $id   = cleanID($ns.':'.$info['id'],false,true);
 
             //find a target filename which is free to use (avoid overwrite)
-            $tmp=$id;$fn='';$cnt=0;
+            $tmp=$id;
+            $fn='';
+            $cnt=0;
             while (!$fn){
                 if (!file_exists(mediaFN($tmp))){
                     $fn   = mediaFN($tmp);
-                }
-                else {
-                    $cnt++;$ext=strrchr($id,'.');
+                } else {
+                    $cnt++;
+                    $ext=strrchr($id,'.');
                     //is there an extension?
-                    if ($ext) $tmp=substr($id,0,strrpos($id,'.')).'_'.$cnt.$ext;
-                    else $tmp=$id.'_'.$cnt;
+                    if ($ext) {
+                        $tmp=substr($id,0,strrpos($id,'.')).'_'.$cnt.$ext;
+                    }
+                    else {
+                        $tmp=$id.'_'.$cnt;
+                    }
                 }
             }
             //and now rename
             rename($base."/".$file,$fn);
-            if($opts['showmsg']) msg(hsc($info['id']).' was not a valid file name for DokuWiki - moved to new name: '.$tmp);
+            if($opts['showmsg']) {
+                msg(hsc($info['id']).' was not a valid file name for DokuWiki - moved to new name: '.$tmp);
+            }
             //return true if recursion is desired
 
         }
@@ -110,10 +117,11 @@ class action_plugin_mediarename extends DokuWiki_Action_Plugin {
         //return true if recursion is desired
         if($type == 'd') {
             if ($opts['recurse']==true) {
-                return true;}
+                return true;
+            }
         }
-        else { return false; }
 
+        return false;
 
     }
 
