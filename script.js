@@ -24,10 +24,8 @@ function mediarename_plugin(){
     var gboxlbl  = document.createElement('label');
     gboxlbl.htmlFor   = 'mediarename_plugin_recursive';
     var capt1,capt2;
-    if (LANG['mediarename_plugin_recursive']) capt1=LANG['mediarename_plugin_recursive']; 
-    else capt1='Rename recursive ?';
-    if (LANG['mediarename_plugin']) capt2=LANG['mediarename_plugin']; 
-    else capt2='Fix invalid mediafilenames';
+    capt1=LANG['mediarename_plugin_recursive'];
+    capt2=LANG['mediarename_plugin'];
     gboxlbl.innerHTML = capt1;
 
     //show a quicklink
