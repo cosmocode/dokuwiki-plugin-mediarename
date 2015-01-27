@@ -10,7 +10,7 @@
 
 
 function mediarename_plugin(){
-    var opts = $('media__opts');
+    var opts = jQuery('#media__opts');
     if(!opts) return;
     if(!window.opener) return;
 
@@ -39,7 +39,7 @@ function mediarename_plugin(){
  
     
     glnk.onclick = function(){
-        var h1 = $('media__ns');
+        var h1 = jQuery('#media__ns');
         if(!h1) return;
         var ns = h1.innerHTML;
 	var rename='flat';
@@ -62,7 +62,7 @@ function mediarename_plugin(){
 
 
 // === main ===
-addInitEvent(function() {
+jQuery(function() {
 
 
     mediarename_plugin();
