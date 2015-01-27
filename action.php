@@ -14,20 +14,6 @@ require_once(DOKU_PLUGIN.'action.php');
 class action_plugin_mediarename extends DokuWiki_Action_Plugin {
 
     /**
-     * return some info
-     */
-    function getInfo(){
-        return array(
-            'author' => 'STADTWERKSTATT',
-            'email'  => 'target@servus.at',
-            'date'   => '2009-12-02',
-            'name'   => 'Media File Rename (mediarename)',
-            'desc'   => 'Media Files with invalid names can be renamed to valid names when they are found in the media directory by the media-manager. Renaming is triggered by a link at media-managers left-side area. Such a filename fixing can be needed, if files were not uploaded with the media manager but copied via the servers filesystem. Take notice: recursive renaming works, but stops inside renamed directories. Re-run the action in that case.',
-            'url'    => 'http://develop.servus.at/',
-        );
-    }
-
-    /**
      * Register its handlers with the dokuwiki's event controller
      */
     function register(&$controller) {
