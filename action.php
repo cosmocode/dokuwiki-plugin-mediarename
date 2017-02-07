@@ -16,7 +16,7 @@ class action_plugin_mediarename extends DokuWiki_Action_Plugin {
     /**
      * Register its handlers with the dokuwiki's event controller
      */
-    function register(&$controller) {
+    function register(Doku_Event_Handler $controller) {
         // MEDIAMANAGER_CONTENT_OUTPUT Wraps the output of the (right) content pane in the Media Manager
         // intresting but we use MEDIAMANAGER_STARTED
         $controller->register_hook(
